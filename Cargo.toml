@@ -1,0 +1,164 @@
+[workspace]
+members = [
+    # Solana Smart Contracts
+    "contracts/solana/rtf-vault",
+    "contracts/solana/rtf-governance",
+    "contracts/solana/rtf-compliance",
+    "contracts/solana/rtf-redemption",
+    "contracts/solana/rtf-tranches",
+
+    # Ethereum Smart Contracts (Rust tooling)
+    "contracts/ethereum/rtf-dao",
+    "contracts/ethereum/rtf-semantic",
+
+    # Starknet Contracts (Cairo integration)
+    "contracts/starknet/rtf-zknav",
+
+    # Backend Microservices
+    "backend/api",
+    "backend/oracle",
+    "backend/compliance",
+    "backend/treasury",
+    "backend/zk-nav",
+    "backend/cross-chain",
+    "backend/metrics",
+    "backend/llm-agent",
+    "backend/exposure-detector",
+    "backend/emergency-handler",
+    "backend/monitoring",
+
+    # Infrastructure & Utilities
+    "infrastructure/deployment",
+    "utils/crypto",
+    "utils/zk-proofs",
+    "utils/post-quantum",
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["RTF Infrastructure Team <team@rtf.finance>"]
+license = "MIT"
+repository = "https://github.com/MrDecryptDecipher/Real-World-Tokenized-Fund-Infrastructure-RTF-"
+description = "Real-World Tokenized Fund Infrastructure - Advanced Multi-Chain Financial Platform"
+
+[workspace.dependencies]
+# Core Rust dependencies
+tokio = { version = "1.39", features = ["full"] }
+anyhow = "1.0"
+thiserror = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+chrono = { version = "0.4", features = ["serde"] }
+uuid = { version = "1.10", features = ["v4", "serde"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+async-trait = "0.1"
+futures = "0.3"
+rayon = "1.8"
+
+# Blockchain & Crypto - Solana (July 2025 - Firedancer Era)
+anchor-lang = "0.30.1"
+anchor-spl = "0.30.1"
+solana-program = "2.0.0"
+solana-sdk = "2.0.0"
+solana-client = "2.0.0"
+solana-account-decoder = "2.0.0"
+spl-token = "6.0.0"
+spl-token-2022 = "3.0.0"
+spl-associated-token-account = "3.0.0"
+switchboard-v2 = "0.6.0"
+
+# Blockchain & Crypto - Ethereum (July 2025 - Post-Merge Era)
+ethers = "2.0.14"
+web3 = "0.19.0"
+alloy = "0.4.2"
+foundry-evm = "0.3.0"
+
+# Blockchain & Crypto - Bitcoin
+bitcoin = "0.31"
+secp256k1 = "0.28"
+miniscript = "11.0"
+
+# Blockchain & Crypto - Multi-chain (July 2025 - CCIP v1.6.0 Production)
+# chainlink-ccip = "1.6.0"  # Not available yet, will implement interface
+# babylon-bitcoin = "2.0.0"  # Not available yet, will implement interface
+
+# Post-Quantum Cryptography
+pqcrypto-dilithium = "0.5"
+pqcrypto-traits = "0.3"
+pqcrypto-kyber = "0.7"
+sha2 = "0.10"
+sha3 = "0.10"
+blake3 = "1.5"
+ring = "0.17"
+ed25519-dalek = "2.1"
+x25519-dalek = "2.0"
+
+# Zero-Knowledge Proofs
+ark-std = "0.4"
+ark-ff = "0.4"
+ark-ec = "0.4"
+ark-serialize = "0.4"
+ark-bn254 = "0.4"
+ark-groth16 = "0.4"
+plonky2 = "0.2"
+starky = "0.2"
+halo2_proofs = "0.3"
+bellman = "0.14"
+nova-snark = "0.32"
+
+# Starknet & Cairo Integration (July 2025 - v0.14.0 with 6-second blocks)
+# starknet = "0.14.0"  # Not available yet, will implement interface
+# cairo-lang = "2.8.0"  # Not available yet, will implement interface
+# starknet-core = "0.14.0"  # Not available yet, will implement interface
+# starknet-providers = "0.14.0"  # Not available yet, will implement interface
+
+# Database & Storage
+sqlx = { version = "0.7", features = ["runtime-tokio-rustls", "postgres", "chrono", "uuid", "json"] }
+redis = { version = "0.24", features = ["tokio-comp", "connection-manager"] }
+rocksdb = "0.21"
+
+# Web & API
+axum = { version = "0.7", features = ["json", "tokio", "tower-log"] }
+tower = { version = "0.4", features = ["full"] }
+tower-http = { version = "0.5", features = ["cors", "trace"] }
+hyper = { version = "1.0", features = ["full"] }
+reqwest = { version = "0.11", features = ["json", "rustls-tls"] }
+
+# Oracle & External APIs
+switchboard-v2 = "0.6.0"
+
+# Compliance & Regulatory (using standard crates for now)
+# kilt-sdk = "0.2"  # Not available on crates.io
+# fractal-id = "0.1"  # Not available on crates.io
+
+# Monitoring & Observability
+prometheus = "0.13"
+metrics = "0.22"
+opentelemetry = "0.21"
+
+# Testing
+proptest = "1.4"
+tokio-test = "0.4"
+wiremock = "0.5"
+
+# Development
+dotenv = "0.15"
+clap = { version = "4.4", features = ["derive"] }
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+
+[profile.dev]
+opt-level = 0
+debug = true
+overflow-checks = true
+
+[profile.test]
+opt-level = 1
+debug = true

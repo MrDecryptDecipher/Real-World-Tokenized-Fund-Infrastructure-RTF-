@@ -1,0 +1,12 @@
+[package]
+name = "rtf-zknav"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# starknet = { workspace = true }  # Will implement interface
+# starknet-core = { workspace = true }  # Will implement interface
+# starknet-providers = { workspace = true }  # Will implement interface
+tokio = { workspace = true }
+serde = { workspace = true }
+anyhow = { workspace = true }

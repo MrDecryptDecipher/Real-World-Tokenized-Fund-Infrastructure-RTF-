@@ -1,0 +1,86 @@
+[package]
+name = "rtf-api"
+version = "0.1.0"
+edition = "2021"
+description = "RTF API - Advanced Multi-Chain Fund Management API"
+
+[[bin]]
+name = "rtf-api"
+path = "src/main.rs"
+
+[dependencies]
+# Core dependencies from workspace
+tokio = { workspace = true }
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+chrono = { workspace = true }
+uuid = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+async-trait = { workspace = true }
+
+# Web framework
+axum = { workspace = true }
+tower = { workspace = true }
+tower-http = { workspace = true }
+hyper = { workspace = true }
+
+# Database
+sqlx = { workspace = true }
+redis = { workspace = true }
+
+# Blockchain
+solana-client = { workspace = true }
+solana-sdk = { workspace = true }
+anchor-lang = { workspace = true }
+ethers = { workspace = true }
+web3 = { workspace = true }
+
+# Cryptography
+pqcrypto-dilithium = { workspace = true }
+sha2 = { workspace = true }
+sha3 = { workspace = true }
+blake3 = { workspace = true }
+ring = { workspace = true }
+
+# Oracle integration
+switchboard-v2 = { workspace = true }
+
+# Monitoring
+prometheus = { workspace = true }
+metrics = { workspace = true }
+opentelemetry = { workspace = true }
+
+# Configuration
+config = "0.14"
+dotenv = { workspace = true }
+clap = { workspace = true }
+
+# Validation
+validator = { version = "0.18", features = ["derive"] }
+garde = { version = "0.18", features = ["derive"] }
+
+# Rate limiting
+governor = "0.6"
+tower-governor = "0.1"
+
+# Authentication & Authorization
+jsonwebtoken = "9.2"
+argon2 = "0.5"
+
+# Cross-chain (using standard HTTP for now)
+# ibc-relayer-types = "0.26"  # Not available on crates.io
+
+# AI/LLM Integration
+reqwest = { workspace = true }
+tiktoken-rs = "0.5"
+
+# Compliance
+regex = "1.10"
+
+[dev-dependencies]
+tokio-test = { workspace = true }
+wiremock = { workspace = true }
+tempfile = "3.8"

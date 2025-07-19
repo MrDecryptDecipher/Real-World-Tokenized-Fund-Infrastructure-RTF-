@@ -1,0 +1,227 @@
+# RTF Infrastructure Production Configuration
+# Real-World Tokenized Fund - Advanced Multi-Chain Platform
+
+[server]
+host = "0.0.0.0"
+port = 2102
+workers = 8
+max_connections = 10000
+request_timeout_seconds = 30
+enable_cors = true
+enable_compression = true
+
+[database]
+url = "postgresql://rtf_user:rtf_secure_password@localhost:5432/rtf_production"
+max_connections = 50
+min_connections = 10
+connection_timeout_seconds = 30
+idle_timeout_seconds = 600
+max_lifetime_seconds = 3600
+enable_logging = false
+migration_path = "migrations"
+
+[redis]
+url = "redis://localhost:6379/1"
+max_connections = 50
+connection_timeout_seconds = 5
+command_timeout_seconds = 5
+enable_cluster = false
+key_prefix = "rtf:prod:"
+
+[blockchain.solana]
+# July 2025 - Firedancer Era with 1M+ TPS capability
+rpc_url = "https://api.mainnet-beta.solana.com"
+ws_url = "wss://api.mainnet-beta.solana.com"
+firedancer_rpc_url = "https://firedancer.mainnet-beta.solana.com"
+commitment = "confirmed"
+vault_program_id = "RTFVau1tAdvancedSPLTokenVau1tProgram11111111"
+governance_program_id = "RTFGovAdvancedDAOGovernanceProgram1111111"
+compliance_program_id = "RTFCompAdvancedComplianceProgram1111111"
+redemption_program_id = "RTFRedAdvancedRedemptionProgram1111111"
+keypair_path = "keypairs/solana-mainnet.json"
+max_retries = 5
+timeout_seconds = 30
+enable_firedancer = true
+target_tps = 1000000
+
+[blockchain.ethereum]
+rpc_url = "https://eth-mainnet.g.alchemy.com/v2/YOUR_ALCHEMY_KEY"
+ws_url = "wss://eth-mainnet.g.alchemy.com/v2/YOUR_ALCHEMY_KEY"
+chain_id = 1
+governance_contract = "0x742d35Cc6634C0532925a3b8D4C9db96C4b4Db44"
+ccip_router = "0x80226fc0Ee2b096224EeAc085Bb9a8cba1146f7D"
+private_key = "ETHEREUM_PRIVATE_KEY_PLACEHOLDER"
+gas_limit = 500000
+gas_price_gwei = 20
+
+[blockchain.bitcoin]
+# July 2025 - Babylon Protocol Phase-2 Mainnet with 56,853+ BTC staked
+rpc_url = "https://bitcoin-mainnet.blockdaemon.com"
+rpc_user = "rtf_bitcoin_user"
+rpc_password = "BITCOIN_RPC_PASSWORD_PLACEHOLDER"
+network = "mainnet"
+babylon_endpoint = "https://babylon-api.mainnet.babylonchain.io"
+babylon_rpc = "https://rpc.babylonchain.io"
+finality_provider = "BABYLON_FINALITY_PROVIDER_ADDRESS"
+staked_btc_amount = 56853
+total_value_locked = "5640000000" # $5.64B USD
+phase = "phase-2"
+enable_finality_gadget = true
+
+[blockchain.starknet]
+# July 2025 - Starknet v0.14.0 with 6-second blocks and distributed sequencer
+rpc_url = "https://starknet-mainnet.g.alchemy.com/v2/YOUR_ALCHEMY_KEY"
+sequencer_url = "https://alpha-mainnet.starknet.io"
+feeder_gateway_url = "https://alpha-mainnet.starknet.io/feeder_gateway"
+account_address = "0x742d35Cc6634C0532925a3b8D4C9db96C4b4Db44"
+private_key = "STARKNET_PRIVATE_KEY_PLACEHOLDER"
+zk_nav_contract = "0x742d35Cc6634C0532925a3b8D4C9db96C4b4Db44"
+max_fee = "1000000000000000"
+block_time_seconds = 6
+enable_mempool = true
+enable_fee_market = true
+
+[blockchain.icp]
+replica_url = "https://ic0.app"
+canister_id = "rdmx6-jaaaa-aaaah-qcaiq-cai"
+identity_pem_path = "keypairs/icp-identity.pem"
+agent_timeout_seconds = 30
+
+[oracle.chainlink]
+# July 2025 - Chainlink CCIP v1.6.0 with SVM support and programmable tokens
+ccip_router_v16 = "0x80226fc0Ee2b096224EeAc085Bb9a8cba1146f7D"
+ccip_token_pool = "0x742d35Cc6634C0532925a3b8D4C9db96C4b4Db44"
+functions_router = "0x6E2dc0F9DB014aE19888F539E59285D2Ea04244C"
+automation_registry = "0x86EFBD0b6736Bed994962f9797049422A3A8E8Ad"
+subscription_id = 1234
+price_feeds = { "BTC/USD" = "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c", "ETH/USD" = "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419" }
+enable_svm_support = true
+enable_programmable_tokens = true
+cross_chain_fee_token = "LINK"
+
+[oracle.switchboard]
+program_id = "SW1TCH7qEPTdLsDHRgPuMQjbQxKdH2aBStViMFnt64f"
+queue_account = "A43DyUGA7s8eXPxqEjJY6EBu1KKbNgfxF8h4HMSMgEYV"
+aggregator_accounts = { "SOL/USD" = "GvDMxPzN1sCj7L26YDK2HnMRXEQmQ2aemov8YBtPS7vR" }
+
+[oracle.pyth]
+program_id = "FsJ3A3u2vn5cTVofAjvy6y5kwABJAqYWpe4975bi2epH"
+confidence_interval = 0.95
+price_accounts = { "BTC/USD" = "GVXRSBjFk6e6J3NbVPXohDJetcTjaeeuykUpbQF8UoMU", "ETH/USD" = "JBu1AL4obBcCMqKBBxhpWCNUt136ijcuMZLFvTP7iWdB" }
+
+[oracle]
+update_interval_seconds = 30
+price_deviation_threshold = 0.02
+confidence_threshold = 90
+
+[compliance.kyc_providers]
+[[compliance.kyc_providers]]
+name = "KILT"
+api_url = "https://api.kilt.io/v1"
+api_key = "KILT_API_KEY_PLACEHOLDER"
+verification_levels = ["basic", "enhanced", "institutional"]
+supported_documents = ["passport", "drivers_license", "national_id"]
+
+[[compliance.kyc_providers]]
+name = "Fractal"
+api_url = "https://api.fractal.id/v1"
+api_key = "FRACTAL_API_KEY_PLACEHOLDER"
+verification_levels = ["light", "plus", "institutional"]
+supported_documents = ["passport", "drivers_license", "utility_bill"]
+
+[compliance.risk_scoring]
+model_endpoint = "https://api.chainalysis.com/v1/risk"
+api_key = "CHAINALYSIS_API_KEY_PLACEHOLDER"
+score_threshold = 80
+factors = ["sanctions", "darknet", "mixer", "exchange"]
+
+[compliance.aml_screening]
+provider = "Chainalysis"
+api_url = "https://api.chainalysis.com/v1/screening"
+api_key = "CHAINALYSIS_API_KEY_PLACEHOLDER"
+screening_lists = ["OFAC", "EU", "UN", "HMT"]
+
+[compliance.jurisdictions]
+[[compliance.jurisdictions]]
+country_code = "US"
+allowed = true
+min_investment = 100000
+accredited_only = true
+additional_requirements = ["accredited_investor_verification", "tax_reporting"]
+
+[[compliance.jurisdictions]]
+country_code = "EU"
+allowed = true
+min_investment = 50000
+accredited_only = false
+additional_requirements = ["mifid_compliance", "gdpr_consent"]
+
+[treasury.risk_limits]
+max_var_95_percent = 3.0
+max_volatility_percent = 15.0
+max_drawdown_percent = 8.0
+min_sharpe_ratio = 0.8
+max_concentration_percent = 20.0
+
+[treasury.emergency_thresholds]
+tvl_drop_percent = 20.0
+nav_drift_percent = 8.0
+liquidity_ratio_min = 0.15
+redemption_queue_max_percent = 40.0
+
+[treasury.ai_assistant]
+provider = "openai"
+api_key = "OPENAI_API_KEY_PLACEHOLDER"
+model = "gpt-4-turbo"
+max_tokens = 4096
+temperature = 0.1
+enable_treasury_analysis = true
+enable_risk_assessment = true
+
+[treasury]
+rebalancing_interval_hours = 12
+asset_allocations = { "BTC" = { min_percent = 20.0, max_percent = 40.0, target_percent = 30.0, rebalance_threshold = 5.0 }, "ETH" = { min_percent = 15.0, max_percent = 35.0, target_percent = 25.0, rebalance_threshold = 5.0 } }
+
+[zk_nav]
+starknet_contract = "0x742d35Cc6634C0532925a3b8D4C9db96C4b4Db44"
+computation_interval_minutes = 30
+proof_verification_timeout_seconds = 300
+max_drift_threshold_percent = 3.0
+aggregation_enabled = true
+recursive_proof_depth = 5
+
+[auth]
+jwt_secret = "RTF_PRODUCTION_JWT_SECRET_CHANGE_THIS_IN_PRODUCTION"
+jwt_expiry_hours = 12
+refresh_token_expiry_days = 30
+password_hash_cost = 14
+max_login_attempts = 3
+lockout_duration_minutes = 30
+require_2fa = true
+session_timeout_minutes = 30
+
+[rate_limiting]
+requests_per_minute = 1000
+burst_size = 100
+enable_per_user_limits = true
+premium_user_multiplier = 10
+admin_exemption = true
+
+[metrics]
+enable_prometheus = true
+prometheus_port = 9090
+enable_jaeger = true
+jaeger_endpoint = "http://localhost:14268/api/traces"
+enable_custom_metrics = true
+metrics_retention_days = 90
+
+[security]
+enable_https = true
+tls_cert_path = "/etc/ssl/certs/rtf.finance.crt"
+tls_key_path = "/etc/ssl/private/rtf.finance.key"
+enable_hsts = true
+enable_csp = true
+allowed_origins = ["https://rtf.finance", "https://app.rtf.finance"]
+api_key_header = "X-RTF-API-Key"
+enable_request_signing = true
+post_quantum_signatures = true

@@ -1,0 +1,61 @@
+[package]
+name = "rtf-vault"
+version = "0.1.0"
+description = "RTF Vault - Advanced SPL Token Vault with Tranching"
+edition = "2021"
+license = "MIT"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "rtf_vault"
+
+[features]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+default = []
+testing = []
+
+[dependencies]
+anchor-lang = { workspace = true }
+anchor-spl = { workspace = true }
+solana-program = { workspace = true }
+spl-token = { workspace = true }
+spl-token-2022 = { workspace = true }
+spl-associated-token-account = { workspace = true }
+switchboard-v2 = { workspace = true }
+# chainlink-ccip = { workspace = true }  # Will implement interface
+# babylon-bitcoin = { workspace = true }  # Will implement interface
+pqcrypto-dilithium = { workspace = true }
+sha2 = { workspace = true }
+blake3 = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+chrono = { workspace = true }
+spl-token-2022 = "0.9"
+mpl-token-metadata = "3.2"
+switchboard-v2 = { workspace = true }
+pyth-sdk-solana = "0.10"
+clockwork-sdk = "2.0"
+
+# Cryptography
+sha2 = { workspace = true }
+sha3 = { workspace = true }
+blake3 = { workspace = true }
+ed25519-dalek = "2.0"
+
+# Serialization
+borsh = "0.10"
+bytemuck = "1.14"
+
+# Math and utilities
+num-traits = "0.2"
+num-bigint = "0.4"
+rust_decimal = "1.32"
+
+[dev-dependencies]
+solana-program-test = "1.18"
+solana-sdk = { workspace = true }
+tokio = { workspace = true }
+proptest = { workspace = true }

@@ -1,0 +1,224 @@
+# Rust
+/target/
+**/*.rs.bk
+Cargo.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.production
+.env.test
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Keys and Secrets
+*.pem
+*.key
+*.p12
+*.pfx
+keypairs/
+secrets/
+wallets/
+
+# Build artifacts
+dist/
+build/
+out/
+
+# Node.js (for frontend)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Python (for scripts)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+
+# Solana
+.anchor/
+test-ledger/
+validator-keypair.json
+
+# Ethereum
+artifacts/
+cache/
+typechain/
+
+# Starknet
+cairo_programs/
+compiled/
+
+# Docker
+.dockerignore
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Coverage
+coverage/
+*.lcov
+
+# Documentation build
+docs/_build/
+site/
+
+# Local configuration
+config.local.toml
+settings.local.json
+
+# PM2
+.pm2/
+ecosystem.config.js.local
+
+# SSL Certificates
+*.crt
+*.csr
+*.pem
+ssl/
+
+# Backup files
+*.bak
+*.backup
+
+# Test artifacts
+test-results/
+screenshots/
+videos/
+
+# Blockchain data
+blockchain-data/
+chain-data/
+
+# RTF Advanced Features - Additional Exclusions
+
+# zkProof artifacts
+proofs/
+circuits/
+trusted_setup/
+zk_artifacts/
+
+# LLM model files and data
+models/
+*.model
+*.weights
+llm_cache/
+semantic_cache/
+
+# Compliance and audit data
+audit_reports/
+compliance_reports/
+security_scans/
+kyc_documents/
+aml_reports/
+
+# Cross-chain bridge data
+bridge_data/
+relay_logs/
+cross_chain_state/
+ccip_data/
+
+# Oracle and price feed data
+oracle_feeds/
+price_data/
+market_feeds/
+switchboard_data/
+chainlink_data/
+
+# Emergency and governance data
+emergency_logs/
+governance_proposals/
+dao_state/
+voting_records/
+
+# Performance and monitoring
+performance_reports/
+load_test_results/
+metrics_data/
+prometheus_data/
+grafana_data/
+
+# Fund exposure and isolation data
+exposure_graphs/
+fund_relationships/
+circular_dependency_logs/
+
+# Post-quantum cryptography
+dilithium_keys/
+pq_signatures/
+quantum_safe_data/
+
+# ESG and sustainability data
+esg_reports/
+carbon_tracking/
+sustainability_metrics/
+
+# Treasury and AI management
+treasury_decisions/
+ai_recommendations/
+risk_assessments/
+portfolio_analysis/
+
+# Legal and regulatory
+legal_documents/filled/
+regulatory_filings/
+jurisdiction_proofs/
+accreditation_docs/
+
+# Deployment and infrastructure
+deployment_logs/
+infrastructure_state/
+terraform_state/
+k8s_secrets/
+
+# Large datasets
+*.parquet
+*.avro
+data_dumps/
+historical_data/
+
+# Sensitive configuration
+production_config/
+mainnet_config/
+api_keys.json
+private_config.toml
+
+# PRD and internal documentation
+rtfprd.txt
+internal_specs/
+design_docs/private/
+
+# Test files not for production
+comprehensive-prd-test.py
+final-test-report.py
+final-verification.py
+real-prd-test.py
+test-comprehensive.sh

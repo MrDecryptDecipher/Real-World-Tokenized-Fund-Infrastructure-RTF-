@@ -1,0 +1,20 @@
+[package]
+name = "rtf_zk_nav"
+version = "0.1.0"
+edition = "2023_11"
+
+[dependencies]
+starknet = "2.6.3"
+
+[[target.starknet-contract]]
+sierra = true
+casm = true
+
+[tool.snforge]
+exit_first = true
+
+[scripts]
+test = "snforge test"
+build = "scarb build"
+declare = "starkli declare target/dev/rtf_zk_nav_RTFZKNav.contract_class.json"
+deploy = "starkli deploy"
