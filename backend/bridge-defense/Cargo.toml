@@ -1,0 +1,57 @@
+[package]
+name = "rtf-bridge-defense"
+version = "0.1.0"
+edition = "2021"
+authors = ["Sandeep Kumar Sahoo <sandeep.savethem2@gmail.com>"]
+description = "Advanced bridge and oracle defense system for RTF Infrastructure"
+license = "MIT"
+repository = "https://github.com/MrDecryptDecipher/Real-World-Tokenized-Fund-Infrastructure-RTF-"
+
+[dependencies]
+# Core dependencies
+tokio = { version = "1.0", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+anyhow = "1.0"
+thiserror = "1.0"
+tracing = "0.1"
+tracing-subscriber = "0.3"
+
+# Async and networking
+reqwest = { version = "0.11", features = ["json"] }
+futures = "0.3"
+
+# Cryptography
+sha2 = "0.10"
+ed25519-dalek = "2.0"
+rand = "0.8"
+
+# Zero-knowledge proofs
+ark-std = "0.4"
+ark-ff = "0.4"
+ark-ec = "0.4"
+ark-serialize = "0.4"
+
+# Oracle integration
+chainlink-feeds = "0.1"
+pyth-sdk-solana = "0.8"
+
+# Time and utilities
+chrono = { version = "0.4", features = ["serde"] }
+uuid = { version = "1.0", features = ["v4", "serde"] }
+
+# Configuration
+config = "0.13"
+dotenv = "0.15"
+
+[dev-dependencies]
+tokio-test = "0.4"
+mockall = "0.11"
+proptest = "1.0"
+
+[features]
+default = ["meta-oracle", "zk-filter", "chain-guard"]
+meta-oracle = []
+zk-filter = []
+chain-guard = []
+testing = []
