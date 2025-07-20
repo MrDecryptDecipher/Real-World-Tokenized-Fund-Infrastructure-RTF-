@@ -4,6 +4,15 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+# Core dependencies
+anyhow = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+
+# Cryptography
+sha2 = "0.10"
+
+# Collections
+std = { version = "1.0", package = "std" }
 tokio = { workspace = true }
 anyhow = { workspace = true }
 serde = { workspace = true }

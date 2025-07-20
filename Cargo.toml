@@ -26,6 +26,9 @@ members = [
     "backend/exposure-detector",
     "backend/emergency-handler",
     "backend/monitoring",
+    "backend/bridge-defense",
+    "backend/governance",
+    "backend/esg-compliance",
 
     # Infrastructure & Utilities
     "infrastructure/deployment",
@@ -143,6 +146,8 @@ opentelemetry = "0.21"
 proptest = "1.4"
 tokio-test = "0.4"
 wiremock = "0.5"
+criterion = { version = "0.5", features = ["html_reports"] }
+futures = "0.3"
 
 # Development
 dotenv = "0.15"
@@ -161,4 +166,8 @@ overflow-checks = true
 
 [profile.test]
 opt-level = 1
+
+[[bench]]
+name = "rtf_benchmarks"
+harness = false
 debug = true
